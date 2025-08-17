@@ -1,103 +1,98 @@
 import Image from "next/image";
+import { ListChecks, Bookmark, Clock, Search, Music } from "lucide-react";
 
-export default function Home() {
+export default function NikkaLibrary() {
+  const features = [
+    {
+      icon: ListChecks,
+      text: "Guarda en ‘Quiero ver’, ‘Viendo’, ‘Visto’ o estados personalizados.",
+    },
+    {
+      icon: Bookmark,
+      text: "Añade notas y favoritos a tus episodios.",
+    },
+    {
+      icon: Clock,
+      text: "Registra hasta qué episodio/minuto llegaste y reanuda fácilmente.",
+    },
+    {
+      icon: Search,
+      text: "Encuentra rápido por tipo, tags, estado o puntuación.",
+    },
+    {
+      icon: Music,
+      text: "Añade momentos, fragmentos o canciones que te marcaron.",
+    },
+  ];
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-white to-white flex items-center justify-center p-6">
+      <main className="w-full max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-10">
+        <header className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-500">
+                <code className="font-bold">Nikka Library</code>
+              </span>
+            </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+            <p className="mt-3 text-sm sm:text-base text-slate-700 max-w-lg mx-auto md:mx-0 font-medium">
+              Una bitacora digital para organiza tus series, episodios y momentos favoritos. Guarda
+              estados, añade notas, y reanuda donde te quedaste.
+            </p>
+
+            <div className="mt-6 flex items-center justify-center md:justify-start gap-3">
+              <span className="inline-flex items-center gap-2 text-xs text-slate-600">
+                <span
+                  className="flex-none w-2 h-2 rounded-full bg-violet-700 animate-pulse"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Estado:</span>
+                <span className="text-lg font-semibold">Coming Soon</span>
+              </span>
+            </div>
+          </div>
+
+          <figure className="flex-none w-full md:w-80 rounded-lg overflow-hidden bg-slate-100">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/mejor.png"
+              alt="Vista previa de Nikka Library — interfaz de usuario con lista de episodios"
+              width={720}
+              height={600}
+              priority
+              sizes="(max-width: 768px) 90vw, 320px"
+              className="object-cover w-full h-48 md:h-56"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            <figcaption className="sr-only">
+              Imagen representativa de la app Nikka Library
+            </figcaption>
+          </figure>
+        </header>
+
+        <section className="mt-8 md:mt-10">
+          <h2 className="sr-only">Características principales</h2>
+
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-800 font-medium">
+            {features.map(({ icon: Icon, text }) => (
+              <li key={text} className="flex items-start gap-3">
+                <span className="flex-none mt-1">
+                  {/* Icono accesible: aria-hidden porque el texto ya describe la feature */}
+                  <Icon
+                    className="w-5 h-5 text-violet-600"
+                    aria-hidden="true"
+                  />
+                </span>
+                <span className="text-sm leading-6">{text}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <footer className="mt-8 border-t pt-4 text-xs text-slate-500">
+          <p>
+            Diseñado con ♥ para organizar tu experiencia de ver series y vídeos.
+          </p>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

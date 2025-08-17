@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }
@@ -24,3 +24,43 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animaciones suaves y respetuosas */
+@keyframes progress-slow {
+  0% {
+    width: 0%;
+  }
+  30% {
+    width: 38%;
+  }
+  60% {
+    width: 22%;
+  }
+  100% {
+    width: 32%;
+  }
+}
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Clases auxiliares usadas arriba 
+  .animate-progress-slow { animation: progress-slow 4.5s ease-in-out infinite; }
+  .motion-safe:animate-ping-slow { animation: ping-slow 2.2s cubic-bezier(0,0,0.2,1) infinite; }
+
+  /* Respeta la preferencia de reducir movimiento  
+  @media (prefers-reduced-motion: reduce) {
+    .animate-progress-slow,
+    .motion-safe:animate-ping-slow { animation: none !important; }
+  }
+  */
